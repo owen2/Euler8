@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitProductSearch", "DigitProductSearch\DigitProductSearch.csproj", "{B59C4976-CEB5-456D-82F2-86E59383BBEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitProductSearchTests", "DigitProductSearchTests\DigitProductSearchTests.csproj", "{62A9E8BA-1416-4147-B4B5-B98777067421}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B59C4976-CEB5-456D-82F2-86E59383BBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B59C4976-CEB5-456D-82F2-86E59383BBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B59C4976-CEB5-456D-82F2-86E59383BBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B59C4976-CEB5-456D-82F2-86E59383BBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A9E8BA-1416-4147-B4B5-B98777067421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A9E8BA-1416-4147-B4B5-B98777067421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A9E8BA-1416-4147-B4B5-B98777067421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A9E8BA-1416-4147-B4B5-B98777067421}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
