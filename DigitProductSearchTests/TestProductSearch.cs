@@ -1,5 +1,6 @@
 using DigitProductSearch;
 using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace DigitProductSearchTests
@@ -51,11 +52,11 @@ namespace DigitProductSearchTests
 06030964956461822175572004233802373135873698360785
 74982810508277521659834594761360129982400036745363
 ", 8, "98797959", 12859560)]
-        public void FindsCorrectProduct(string digits, int size, string highestProductSection, int highestProduct)
+        public async Task FindsCorrectProduct(string digits, int size, string highestProductSection, int highestProduct)
         {
-            MaxProductSearch.FindHighestProductAdjacentDigits(digits, size, out var section, out var product);
-            Assert.Equal(highestProduct, product);
-            Assert.Equal(highestProductSection, section);
+            var result = await MaxProductSearch.FindHighestProductAdjacentDigits(digits, size);
+            Assert.Equal(highestProductSection, result.Item1);
+            Assert.Equal(highestProduct, result.Item2);
         }
     }
 }
