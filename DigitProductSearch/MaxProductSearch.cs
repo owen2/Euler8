@@ -15,7 +15,6 @@ namespace DigitProductSearch
             stopwatch.Start();
             try
             {
-
                 var source = digits.Replace("\r\n", string.Empty).Select(c => long.Parse(c.ToString())).ToArray();
 
                 return await searchForLargestProduct(size, source);
@@ -29,15 +28,14 @@ namespace DigitProductSearch
 
         private static async Task<Tuple<string, long>> searchForLargestProduct(int size, long[] source)
         {
-            if (source.Length > size * 2)
+            if (source.Length > size * 2 && false)
             {
                 var half = source.Length / 2;
                 var searchHalf = size / 2;
-                var results = await Task.WhenAll<Tuple<string, long>>(
+                var results = (await Task.WhenAll<Tuple<string, long>>(
                      searchForLargestProduct(size, source[..(half + searchHalf)]),
-                     searchForLargestProduct(size, source[(half - searchHalf)..])
-                 );
-                return results.Aggregate((result1, result2) => result1.Item2 > result2.Item2 ? result1 : result2);
+                     searchForLargestProduct(size, source[(half - searchHalf)..])))
+                    .Aggregate((result1, result2) => result1.Item2 > result2.Item2 ? result1 : result2);
             }
 
             var section = string.Empty;
