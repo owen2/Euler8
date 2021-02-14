@@ -42,7 +42,7 @@ namespace DigitProductSearch
             var section = string.Empty;
             var bestProduct = 0L;
 
-            for (int i = 0; i < source.Length - size; i++)
+            for (int i = 0; i <= source.Length - size; i++)
             {
                 var chunk = source[i..(i + size)];
                 var product = chunk.Aggregate((a, b) => a * b);
@@ -52,7 +52,7 @@ namespace DigitProductSearch
                     bestProduct = product;
                 }
             }
-            return new Tuple<string, Int64>(section, bestProduct);
+            return new Tuple<string, long>(section, bestProduct);
         }
     }
 }

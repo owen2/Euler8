@@ -74,6 +74,7 @@ namespace DigitProductSearchTests
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450
 ", 13, "5576689664895", 23514624000L)]
+        [InlineData("1112",2, "12", 2)]
         public async Task FindsCorrectProduct(string digits, int size, string highestProductSection, long highestProduct)
         {
             var result = await MaxProductSearch.FindHighestProductAdjacentDigits(digits, size);
