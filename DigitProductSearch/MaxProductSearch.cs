@@ -20,11 +20,10 @@ namespace DigitProductSearch
             if (source.Length > size * 3)
             {
                 var half = source.Length / 2;
-                IEnumerable<Tuple<string, int>> results = await Task.WhenAll<Tuple<string, int>>(
-                     searchForLargestProduct(size, source[0..half]),
-                     searchForLargestProduct(size, source[half..^0]),
-                      searchForLargestProduct(size, source[(half - (size / 2))..(half + (size / 2))]) // covers seams in the chunks
-
+                var searchHalf = size / 2;
+                var results = await Task.WhenAll<Tuple<string, int>>(
+                     searchForLargestProduct(size, source[..(half+searchHalf)]),
+                     searchForLargestProduct(size, source[(half-searchHalf)..])
                  );
                 return results.Aggregate((result1, result2) => result1.Item2 > result2.Item2 ? result1 : result2);
             }
