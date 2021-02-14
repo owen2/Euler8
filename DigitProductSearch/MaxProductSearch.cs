@@ -35,7 +35,7 @@ namespace DigitProductSearch
 
                 var task1 = searchForLargestProduct(size, source[..(half + searchHalf)]);
                 var task2 = searchForLargestProduct(size, source[(half - searchHalf)..]);
-               
+                await Task.WhenAll(task1, task2);
                 return task1.Result.Item2 > task2.Result.Item2 ? task1.Result : task2.Result;
             }
 
