@@ -22,7 +22,7 @@ namespace DigitProductSearch
             finally
             {
                 stopwatch.Stop();
-                Trace.WriteLine($"Found best {size} in {stopwatch.ElapsedMilliseconds}ms");
+                Trace.WriteLine($"Found best {size} in {stopwatch.ElapsedTicks} ticks");
             }
         }
 
@@ -32,10 +32,11 @@ namespace DigitProductSearch
             {
                 var half = source.Length / 2;
                 var searchHalf = size / 2;
-                var results = (await Task.WhenAll<Tuple<string, long>>(
-                     searchForLargestProduct(size, source[..(half + searchHalf)]),
-                     searchForLargestProduct(size, source[(half - searchHalf)..])))
-                    .Aggregate((result1, result2) => result1.Item2 > result2.Item2 ? result1 : result2);
+
+                var task1 = searchForLargestProduct(size, source[..(half + searchHalf)]);
+                var task2 = searchForLargestProduct(size, source[(half - searchHalf)..]);
+               
+                return task1.Result.Item2 > task2.Result.Item2 ? task1.Result : task2.Result;
             }
 
             var section = string.Empty;
