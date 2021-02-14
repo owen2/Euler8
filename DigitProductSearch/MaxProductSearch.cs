@@ -8,20 +8,20 @@ namespace DigitProductSearch
 {
     public static class MaxProductSearch
     {
-        public static async Task<Tuple<string, int>> FindHighestProductAdjacentDigits(string digits, int size)
+        public static async Task<Tuple<string, long>> FindHighestProductAdjacentDigits(string digits, int size)
         {
-            var source = digits.Replace("\r\n", string.Empty).Select(c => int.Parse(c.ToString())).ToArray();
+            var source = digits.Replace("\r\n", string.Empty).Select(c => long.Parse(c.ToString())).ToArray();
 
             return await searchForLargestProduct(size, source);
         }
 
-        private static async Task<Tuple<string, int>> searchForLargestProduct(int size, int[] source)
+        private static async Task<Tuple<string, long>> searchForLargestProduct(int size, long[] source)
         {
             if (source.Length > size * 2)
             {
                 var half = source.Length / 2;
                 var searchHalf = size / 2;
-                var results = await Task.WhenAll<Tuple<string, int>>(
+                var results = await Task.WhenAll<Tuple<string, long>>(
                      searchForLargestProduct(size, source[..(half+searchHalf)]),
                      searchForLargestProduct(size, source[(half-searchHalf)..])
                  );
@@ -29,7 +29,7 @@ namespace DigitProductSearch
             }
 
             var section = string.Empty;
-            var bestProduct = 0;
+            var bestProduct = 0l;
 
             for (int i = 0; i < source.Length - size; i++)
             {
@@ -41,7 +41,7 @@ namespace DigitProductSearch
                     bestProduct = product;
                 }
             }
-            return new Tuple<string, int>(section, bestProduct);
+            return new Tuple<string, Int64>(section, bestProduct);
         }
     }
 }
