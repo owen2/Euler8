@@ -28,7 +28,7 @@ namespace DigitProductSearch
 
         private static async Task<Tuple<string, long>> searchForLargestProduct(int size, long[] source)
         {
-            if (source.Length > size * 2 && false)
+            if (source.Length > size * 2)
             {
                 var half = source.Length / 2;
                 var searchHalf = size / 2;
